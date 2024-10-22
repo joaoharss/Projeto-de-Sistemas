@@ -1,0 +1,1 @@
+Essa pasta possui uma solução com dois projetos de um TodoList, sendo um minimal API e uma API um pouco mais elaborada, aplicando conceitos de Model, View e Controllers.
