@@ -69,8 +69,6 @@ namespace MinimalApiTodoList
                 return Results.NotFound();
             });
 
-
-
             app.Run();
         }
     }
