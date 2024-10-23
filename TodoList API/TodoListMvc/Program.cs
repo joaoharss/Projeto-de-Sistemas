@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using TodoListMvc.Context;
 using TodoListMvc.Contracts;
+using TodoListMvc.Repository;
 using TodoListMvc.Services;
 
 namespace TodoListMvc
@@ -18,9 +19,11 @@ namespace TodoListMvc
             builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //Toda vez que for pedido um ITodo, cria uma instância de TodoService.
+            //Toda vez que for pedido um ITodo, cria uma instï¿½ncia de TodoService.
             builder.Services.AddScoped<ITodo, TodoService>();
-
+                
+            builder.Services.AddScoped<TodoRepository, TodoRepository>();
+            
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
