@@ -1,0 +1,6 @@
+@Cadastro_Mvc_HostAddress = http://localhost:5200
+
+GET {{Cadastro_Mvc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
