@@ -1,3 +1,8 @@
+﻿using Cadastro_Mvc.Context;
+using Cadastro_Mvc.Contracts;
+using Cadastro_Mvc.Repository;
+using Cadastro_Mvc.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cadastro_Mvc
 {
@@ -7,16 +12,20 @@ namespace Cadastro_Mvc
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<ContextDb>(opt => opt.UseInMemoryDatabase("CadastroList"));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            builder.Services.AddScoped<IPessoa, PessoaService>();
+            builder.Services.AddScoped<IEndereco, EnderecoService>();
+
+            builder.Services.AddScoped<EnderecoRepository, EnderecoRepository>();
+            builder.Services.AddScoped<PessoaRepository, PessoaRepository>();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
