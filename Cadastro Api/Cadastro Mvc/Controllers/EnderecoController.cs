@@ -20,7 +20,7 @@ namespace Cadastro_Mvc.Controllers
         }
 
         [HttpPost("/Endereco/Create/")]
-        public ActionResult<Endereco> Create([FromBody] Endereco endereco)
+        public ActionResult<Endereco> Create([FromBody] EnderecoDTO endereco)
         {
             return JsonOptionsUtil.Create(_enderecoContract.Create(endereco));
         }

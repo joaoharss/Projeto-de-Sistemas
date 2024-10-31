@@ -19,7 +19,7 @@ namespace Cadastro_Mvc.Controllers
         }
 
         [HttpPost("/Create/")]
-        public ActionResult<Pessoa> Create([FromBody] Pessoa pessoa)
+        public ActionResult<Pessoa> Create([FromBody] PessoaDTO pessoa)
         {
             return JsonOptionsUtil.Create(_pessoaContract.Create(pessoa));
         }

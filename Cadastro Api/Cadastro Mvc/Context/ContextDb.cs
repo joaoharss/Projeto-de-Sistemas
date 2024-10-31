@@ -20,8 +20,9 @@ namespace Cadastro_Mvc.Context
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Endereco>()
-                .Property(e => e.IdPessoa)
-                .IsRequired(false);
+                .HasOne(w => w.Pessoa)
+                .WithMany(p => p.Enderecos)
+                .HasForeignKey(p => p.IdPessoa);
         }
     }
 }

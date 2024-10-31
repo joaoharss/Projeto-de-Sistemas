@@ -12,9 +12,25 @@ namespace Cadastro_Mvc.Services
         {
             _pessoaRepository = pessoaRepository;
         }
-        public Pessoa Create(Pessoa pessoa)
+        public Pessoa Create(PessoaDTO pessoa)
         {
-            return _pessoaRepository.Create(pessoa);
+
+            Pessoa pessoaEntidade = new Pessoa
+            {
+                Email = pessoa.Email,
+                Idade = pessoa.Idade,
+                Nome = pessoa.Nome,
+                Enderecos = pessoa.Enderecos.Select(w => new Endereco
+                {
+                    Bairro = w.Bairro,
+                    Cidade = w.Cidade,
+                    Logradouro = w.Logradouro,
+                    Numero = w.Numero,
+                    UF = w.UF,
+                }).ToList()
+            };
+
+            return _pessoaRepository.Create(pessoaEntidade);
         }
 
         public Pessoa GetById(int id)

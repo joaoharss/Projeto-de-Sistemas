@@ -15,12 +15,22 @@ namespace Cadastro_Mvc.Services
             _pessoaRepository = pessoaRepository;
 
         }
-        public Endereco Create(Endereco endereco)
+        public Endereco Create(EnderecoDTO endereco)
         {
             if (_pessoaRepository.GetById(endereco.IdPessoa).IsNull())
                 throw new NullReferenceException("Essa pessoa não existe.");
 
-            return _enderecoRepository.Create(endereco);
+            Endereco enderecoEntity = new Endereco
+            {
+                Bairro = endereco.Bairro,
+                Cidade = endereco.Cidade,
+                IdPessoa = endereco.IdPessoa,
+                Logradouro = endereco.Logradouro,
+                Numero = endereco.Numero,
+                UF = endereco.UF,
+            };
+
+            return _enderecoRepository.Create(enderecoEntity);
         }
     }
 }
