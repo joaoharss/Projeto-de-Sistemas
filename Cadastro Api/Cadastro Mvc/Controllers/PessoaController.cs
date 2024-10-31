@@ -25,7 +25,7 @@ namespace Cadastro_Mvc.Controllers
         }
 
         [HttpGet("/GetById/{id}")]
-        public ActionResult<Pessoa> GetById(int id)
+        public ActionResult<Pessoa> GetById(Guid id)
         {
             return JsonOptionsUtil.Create(_pessoaContract.GetById(id));
         }

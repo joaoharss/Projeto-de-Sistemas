@@ -25,6 +25,6 @@ namespace Cadastro_Mvc.Contracts
         [DataMember]
         public string Bairro { get; set; }
         [DataMember]
-        public virtual int IdPessoa { get; set; }
+        public virtual Guid IdPessoa { get; set; }
     }
 }

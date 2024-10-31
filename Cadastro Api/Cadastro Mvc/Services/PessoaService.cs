@@ -33,7 +33,7 @@ namespace Cadastro_Mvc.Services
             return _pessoaRepository.Create(pessoaEntidade);
         }
 
-        public Pessoa GetById(int id)
+        public Pessoa GetById(Guid id)
         {
             return _pessoaRepository.GetById(id);
         }

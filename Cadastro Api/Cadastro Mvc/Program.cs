@@ -1,7 +1,10 @@
 ﻿using Cadastro_Mvc.Context;
 using Cadastro_Mvc.Contracts;
+using Cadastro_Mvc.GenericRepository;
+using Cadastro_Mvc.Model;
 using Cadastro_Mvc.Repository;
 using Cadastro_Mvc.Services;
+using Cadastro_Mvc.Util;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cadastro_Mvc
@@ -22,7 +25,10 @@ namespace Cadastro_Mvc
             builder.Services.AddScoped<IEndereco, EnderecoService>();
 
             builder.Services.AddScoped<EnderecoRepository, EnderecoRepository>();
+            builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped<PessoaRepository, PessoaRepository>();
+
+
 
             var app = builder.Build();
 

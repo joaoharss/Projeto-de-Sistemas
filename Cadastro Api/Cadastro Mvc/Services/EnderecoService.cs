@@ -1,4 +1,5 @@
 ﻿using Cadastro_Mvc.Contracts;
+using Cadastro_Mvc.Exceptions;
 using Cadastro_Mvc.Model;
 using Cadastro_Mvc.Repository;
 using Cadastro_Mvc.Util;
@@ -18,7 +19,7 @@ namespace Cadastro_Mvc.Services
         public Endereco Create(EnderecoDTO endereco)
         {
             if (_pessoaRepository.GetById(endereco.IdPessoa).IsNull())
-                throw new NullReferenceException("Essa pessoa não existe.");
+                throw new BusinessException("Essa pessoa não existe.");
 
             Endereco enderecoEntity = new Endereco
             {

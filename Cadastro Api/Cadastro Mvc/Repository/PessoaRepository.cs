@@ -23,7 +23,7 @@ namespace Cadastro_Mvc.Repository
             return pessoa;
         }
 
-        public Pessoa GetById(int id)
+        public Pessoa GetById(Guid id)
         {
             var pessoa = _dbContext.Pessoas
                 .Include(w => w.Enderecos)
