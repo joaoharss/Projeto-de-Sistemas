@@ -1,5 +1,6 @@
 ﻿using Cadastro_Mvc.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 namespace Cadastro_Mvc.Context
 {
@@ -23,6 +24,10 @@ namespace Cadastro_Mvc.Context
                 .HasOne(w => w.Pessoa)
                 .WithMany(p => p.Enderecos)
                 .HasForeignKey(p => p.IdPessoa);
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
         }
     }
 }
