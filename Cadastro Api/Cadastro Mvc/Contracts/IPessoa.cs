@@ -5,16 +5,16 @@ namespace Cadastro_Mvc.Contracts
 {
     public interface IPessoa
     {
-        Pessoa Create(Pessoa pessoa);
+        Pessoa Create(PessoaDTO pessoa);
 
         Pessoa GetById(int id);
     }
 
     [DataContract]
-    public class PessoaDc
+    public class PessoaDTO
     {
         [DataMember]
-        public int Id { get; set; }
+        public int Id { get; private set; }
         [DataMember]
         public string Nome { get; set; }
         [DataMember]
@@ -22,6 +22,6 @@ namespace Cadastro_Mvc.Contracts
         [DataMember]
         public int Idade { get; set; }
         [DataMember]
-        public IEnumerable<Endereco> Enderecos { get; set; }
+        public IEnumerable<EnderecoDTO> Enderecos { get; set; }
     }
 }
