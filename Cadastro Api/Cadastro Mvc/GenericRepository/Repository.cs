@@ -1,5 +1,5 @@
-﻿using Cadastro_Mvc.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Cadastro_Mvc.GenericRepository
 {
@@ -20,6 +20,11 @@ namespace Cadastro_Mvc.GenericRepository
             _ctx.SaveChanges();
 
             return entity;
+        }
+
+        public T? GetById(Guid id)
+        {
+            return _dbSet.Find(id);
         }
     }
 }

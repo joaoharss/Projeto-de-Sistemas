@@ -1,6 +1,8 @@
 ﻿using Cadastro_Mvc.Contracts;
+using Cadastro_Mvc.Exceptions;
 using Cadastro_Mvc.Model;
 using Cadastro_Mvc.Repository;
+using Cadastro_Mvc.Util;
 
 namespace Cadastro_Mvc.Services
 {
@@ -33,8 +35,11 @@ namespace Cadastro_Mvc.Services
             return _pessoaRepository.Create(pessoaEntidade);
         }
 
-        public Pessoa GetById(Guid id)
+        public Pessoa? GetById(Guid id)
         {
+            if (_pessoaRepository.GetById(id).IsNull())
+                throw new BusinessException("Essa pessoa não existe.");
+
             return _pessoaRepository.GetById(id);
         }
     }

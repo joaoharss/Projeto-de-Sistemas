@@ -7,7 +7,7 @@ namespace Cadastro_Mvc.Contracts
     {
         Pessoa Create(PessoaDTO pessoa);
 
-        Pessoa GetById(Guid id);
+        Pessoa? GetById(Guid id);
     }
 
     [DataContract]
